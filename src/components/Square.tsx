@@ -2,16 +2,21 @@ import React from 'react'
 
 export const Square = ({
     squareSymbol,
-    setSquareSymbol
+    setSquareSymbol,
+    currentId,
+    setCurrentId
 }: {
     squareSymbol: string | undefined,
-    setSquareSymbol: Function
+    setSquareSymbol: Function,
+    currentId: number | undefined,
+    setCurrentId: Function
 }) => {
 
-    const handleClick = () => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        setCurrentId(currentId)
         setSquareSymbol('X')
-    }
 
+    }
     return (
         <button
             className='square'

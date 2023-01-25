@@ -3,11 +3,15 @@ import { Square } from './components/Square';
 
 function App() {
   const [squareSymbol, setSquareSymbol] = useState<string | undefined>()
+  const [currentId, setCurrentId] = useState<number | undefined>()
 
   const arrayOfSquares: number[] = []
   for (let i = 1; i < 10; i++) {
     arrayOfSquares.push(i)
   }
+
+  console.log({currentId})
+
 
   return (
     <div className='app'>
@@ -18,6 +22,8 @@ function App() {
           <Square
             setSquareSymbol={setSquareSymbol}
             squareSymbol={squareSymbol}
+            currentId={numb}
+            setCurrentId={setCurrentId}
           />
         ))}
       </div>
