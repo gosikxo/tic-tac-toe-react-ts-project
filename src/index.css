@@ -1,13 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Solitreo&display=swap');
+
+.headerText {
+  font-family: 'Solitreo', cursive;
+  color: rgb(22, 120, 110);
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px rgb(101, 230, 217);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.turnText {
+  color: rgb(28, 65, 62);
+  font-family: 'Solitreo';
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
 }
+
+.board {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  max-width: 300px;
+  row-gap: 5px;
+  column-gap: 5px;
+}
+
+
+.square {
+  border: 1px solid white;
+  border-radius: 15px;
+  min-width: 100px;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgb(45, 159, 148);
+}
+
