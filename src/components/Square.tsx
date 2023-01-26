@@ -7,7 +7,8 @@ export const Square = ({
     setCurrentId,
     text,
     currentPlayer,
-    setCurrentPlayer
+    setCurrentPlayer,
+    gameOver
 }: {
     arrayOfSquares: string[],
     setArrayOfSquares: Function,
@@ -15,7 +16,8 @@ export const Square = ({
     setCurrentId: Function,
     text: string,
     currentPlayer: string | undefined,
-    setCurrentPlayer: Function
+    setCurrentPlayer: Function,
+    gameOver: boolean
 }) => {
 
     useEffect(() => {
@@ -24,10 +26,10 @@ export const Square = ({
     }, [currentId, setCurrentId, setCurrentPlayer])
 
     const handleClick = (i: number) => {
-        if (currentPlayer === 'X' && arrayOfSquares[i] === '') {
+        if (!gameOver && currentPlayer === 'X' && arrayOfSquares[i] === '') {
             arrayOfSquares[i] = 'X'
             changePlayer()
-        } else if (currentPlayer === 'O' && arrayOfSquares[i] === '') {
+        } else if (!gameOver && currentPlayer === 'O' && arrayOfSquares[i] === '') {
             arrayOfSquares[i] = 'O'
             changePlayer()
         }
