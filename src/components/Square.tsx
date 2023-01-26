@@ -1,28 +1,24 @@
 import React from 'react'
 
 export const Square = ({
-    squareSymbol,
-    setSquareSymbol,
+    arrayOfSquares,
     currentId,
     setCurrentId
 }: {
-    squareSymbol: string | undefined,
-    setSquareSymbol: Function,
-    currentId: number | undefined,
+    arrayOfSquares: string[],
+    currentId: number,
     setCurrentId: Function
 }) => {
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleClick = (i: number) => {
         setCurrentId(currentId)
-        setSquareSymbol('X')
-
     }
     return (
         <button
             className='square'
-            onClick={handleClick}
+            onClick={() => handleClick(currentId)}
         >
-            {squareSymbol}
+
         </button>
     )
 }
