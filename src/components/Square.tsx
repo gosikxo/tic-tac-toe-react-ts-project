@@ -8,7 +8,9 @@ export const Square = ({
     text,
     currentPlayer,
     setCurrentPlayer,
-    gameOver
+    gameOver,
+    setGameOver,
+    setWinner
 }: {
     arrayOfSquares: string[],
     setArrayOfSquares: Function,
@@ -17,13 +19,47 @@ export const Square = ({
     text: string,
     currentPlayer: string | undefined,
     setCurrentPlayer: Function,
-    gameOver: boolean
+    gameOver: boolean,
+    setGameOver: Function,
+    setWinner: Function
 }) => {
 
     useEffect(() => {
         setCurrentId(currentId)
         setCurrentPlayer('X')
     }, [currentId, setCurrentId, setCurrentPlayer])
+
+    useEffect(() => {
+        if ((arrayOfSquares[currentId] === arrayOfSquares[currentId + 1] &&
+            arrayOfSquares[currentId + 1] === arrayOfSquares[currentId + 2] &&
+            arrayOfSquares[currentId] === 'X') ||
+            (arrayOfSquares[currentId] === arrayOfSquares[currentId + 3] &&
+                arrayOfSquares[currentId + 3] === arrayOfSquares[currentId + 6] &&
+                arrayOfSquares[currentId] === 'X') ||
+            (arrayOfSquares[currentId] === arrayOfSquares[currentId + 4] &&
+                arrayOfSquares[currentId + 4] === arrayOfSquares[currentId + 8] &&
+                arrayOfSquares[currentId] === 'X') ||
+            (arrayOfSquares[currentId] === arrayOfSquares[currentId + 2] &&
+                arrayOfSquares[currentId + 2] === arrayOfSquares[currentId + 4] &&
+                arrayOfSquares[currentId] === 'X')) {
+            setGameOver(true)
+            setWinner('X')
+        } else if ((arrayOfSquares[currentId] === arrayOfSquares[currentId + 1] &&
+            arrayOfSquares[currentId + 1] === arrayOfSquares[currentId + 2] &&
+            arrayOfSquares[currentId] === 'O') ||
+            (arrayOfSquares[currentId] === arrayOfSquares[currentId + 3] &&
+                arrayOfSquares[currentId + 3] === arrayOfSquares[currentId + 6] &&
+                arrayOfSquares[currentId] === 'O') ||
+            (arrayOfSquares[currentId] === arrayOfSquares[currentId + 4] &&
+                arrayOfSquares[currentId + 4] === arrayOfSquares[currentId + 8] &&
+                arrayOfSquares[currentId] === 'O') ||
+            (arrayOfSquares[currentId] === arrayOfSquares[currentId + 2] &&
+                arrayOfSquares[currentId + 2] === arrayOfSquares[currentId + 4] &&
+                arrayOfSquares[currentId] === 'O')) {
+            setGameOver(true)
+            setWinner('O')
+        }
+    }, [arrayOfSquares, currentId, setGameOver, setWinner])
 
     const handleClick = (i: number) => {
         if (!gameOver && currentPlayer === 'X' && arrayOfSquares[i] === '') {

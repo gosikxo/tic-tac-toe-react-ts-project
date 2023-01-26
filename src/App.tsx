@@ -6,12 +6,14 @@ function App() {
   const [currentId, setCurrentId] = useState<number>()
   const [currentPlayer, setCurrentPlayer] = useState<string | undefined>()
   const [gameOver, setGameOver] = useState<boolean>(false)
+  const [winner, setWinner] = useState<string | undefined>()
 
-  console.log(arrayOfSquares)
+  console.log(arrayOfSquares, gameOver)
 
   const restartGame = () => {
     setArrayOfSquares(['', '', '', '', '', '', '', '', ''])
     setGameOver(false)
+    setCurrentPlayer('X')
   }
 
   return (
@@ -24,7 +26,7 @@ function App() {
         :
         <div className='endOfTheGame'>
           <p className='gameOver'>
-            Game Over
+            {winner} won!
           </p>
           <button onClick={restartGame} className='gameOverButton'>
             Play Again?
@@ -42,6 +44,8 @@ function App() {
             currentPlayer={currentPlayer}
             setCurrentPlayer={setCurrentPlayer}
             gameOver={gameOver}
+            setGameOver={setGameOver}
+            setWinner={setWinner}
           />
         ))}
       </div>
