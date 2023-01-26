@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='app'>
       <h1 className='headerText'>Let's play!</h1>
-      <p className='turnText'>Next player: X</p>
+      <p className='turnText'>Next player: {currentPlayer}</p>
       <div className='board'>
         {arrayOfSquares.map((square: string, idx: number) => (
           <Square

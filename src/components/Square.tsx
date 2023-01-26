@@ -24,13 +24,14 @@ export const Square = ({
     }, [currentId, setCurrentId, setCurrentPlayer])
 
     const handleClick = (i: number) => {
-        if (currentPlayer === 'X') {
+        if (currentPlayer === 'X' && arrayOfSquares[i] === '') {
             arrayOfSquares[i] = 'X'
-        } else {
+            changePlayer()
+        } else if (currentPlayer === 'O' && arrayOfSquares[i] === '') {
             arrayOfSquares[i] = 'O'
+            changePlayer()
         }
         setArrayOfSquares([...arrayOfSquares])
-        changePlayer()
     }
 
     const changePlayer = () => {
