@@ -1,24 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export const Square = ({
     arrayOfSquares,
     setArrayOfSquares,
     currentId,
     setCurrentId,
-    text
+    text,
+    currentPlayer,
+    setCurrentPlayer
 }: {
     arrayOfSquares: string[],
     setArrayOfSquares: Function,
     currentId: number,
     setCurrentId: Function,
-    text: string
+    text: string,
+    currentPlayer: string | undefined,
+    setCurrentPlayer: Function
 }) => {
 
-    const handleClick = (i: number) => {
+    useEffect(() => {
         setCurrentId(currentId)
-        arrayOfSquares[i] = 'X'
+        setCurrentPlayer('X')
+    }, [currentId, setCurrentId, setCurrentPlayer])
+
+    const handleClick = (i: number) => {
+        if (currentPlayer === 'X') {
+            arrayOfSquares[i] = 'X'
+        } else {
+            arrayOfSquares[i] = 'O'
+        }
         setArrayOfSquares([...arrayOfSquares])
+        changePlayer()
     }
+
+    const changePlayer = () => {
+        if (currentPlayer === 'X') {
+            setCurrentPlayer('O')
+        } else {
+            setCurrentPlayer('X')
+        }
+    }
+
     return (
         <button
             className='square'

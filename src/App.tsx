@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Square } from './components/Square';
 
 function App() {
   const [arrayOfSquares, setArrayOfSquares] = useState<string[]>(['', '', '', '', '', '', '', '', '',])
   const [currentId, setCurrentId] = useState<number>()
+  const [currentPlayer, setCurrentPlayer] = useState<string | undefined>()
 
   console.log(arrayOfSquares)
 
@@ -19,6 +20,8 @@ function App() {
             currentId={idx}
             setCurrentId={setCurrentId}
             text={square}
+            currentPlayer={currentPlayer}
+            setCurrentPlayer={setCurrentPlayer}
           />
         ))}
       </div>
