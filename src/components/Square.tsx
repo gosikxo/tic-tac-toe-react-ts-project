@@ -32,6 +32,7 @@ export const Square = ({
     useEffect(() => {
         if ((arrayOfSquares[currentId] === arrayOfSquares[currentId + 1] &&
             arrayOfSquares[currentId + 1] === arrayOfSquares[currentId + 2] &&
+            (currentId === 0 || currentId === 3 || currentId === 6) &&
             arrayOfSquares[currentId] === 'X') ||
             (arrayOfSquares[currentId] === arrayOfSquares[currentId + 3] &&
                 arrayOfSquares[currentId + 3] === arrayOfSquares[currentId + 6] &&
@@ -46,6 +47,7 @@ export const Square = ({
             setWinner('X')
         } else if ((arrayOfSquares[currentId] === arrayOfSquares[currentId + 1] &&
             arrayOfSquares[currentId + 1] === arrayOfSquares[currentId + 2] &&
+            (currentId === 0 || currentId === 3 || currentId === 6) &&
             arrayOfSquares[currentId] === 'O') ||
             (arrayOfSquares[currentId] === arrayOfSquares[currentId + 3] &&
                 arrayOfSquares[currentId + 3] === arrayOfSquares[currentId + 6] &&
