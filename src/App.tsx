@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Square } from './components/Square'
+import { isGameOver } from './game'
 
 function App() {
   const [arrayOfSquares, setArrayOfSquares] = useState<string[]>(['', '', '', '', '', '', '', '', ''])
@@ -37,20 +38,20 @@ function App() {
   }, [setCurrentPlayer])
 
   useEffect(() => {
-    if ((arrayOfSquares[0] === arrayOfSquares[1] &&
-      arrayOfSquares[1] === arrayOfSquares[2] &&
-      arrayOfSquares[0] === 'X') ||
-      (arrayOfSquares[0] === arrayOfSquares[3] &&
-        arrayOfSquares[3] === arrayOfSquares[6] &&
-        arrayOfSquares[0] === 'X') ||
-      (arrayOfSquares[0] === arrayOfSquares[4] &&
-        arrayOfSquares[4] === arrayOfSquares[8] &&
-        arrayOfSquares[0] === 'X') ||
-      (arrayOfSquares[0] === arrayOfSquares[2] &&
-        arrayOfSquares[2] === arrayOfSquares[4] &&
-        arrayOfSquares[0] === 'X')) {
-      setGameOver(true)
-      setWinner('X')
+    const result = isGameOver(arrayOfSquares);
+
+    if (result === 'O_WON') {
+      setWinner('O won!');
+    }
+    if (result === 'X_WON') {
+      setWinner('X won!');
+    }
+    if (result === 'DRAW') {
+      setWinner('It\'s a draw')
+    }
+
+    if (result) {
+      setGameOver(true);
     }
   }, [arrayOfSquares, setGameOver, setWinner])
 
@@ -64,7 +65,7 @@ function App() {
         :
         <div className='endOfTheGame'>
           <p className='gameOver'>
-            {winner} won!
+            {winner}
           </p>
           <button onClick={restartGame} className='gameOverButton'>
             Play Again?
@@ -74,7 +75,7 @@ function App() {
       <div className='board'>
         {arrayOfSquares.map((square: string, idx: number) => (
           <Square
-          text={square}
+            text={square}
             onClick={() => {
               handleClick(idx)
             }}

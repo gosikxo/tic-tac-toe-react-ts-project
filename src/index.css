@@ -39,6 +39,12 @@
   cursor: pointer;
   background-color: #006d77;
   color: #ffddd2;
+  font-size: 22px;
+}
+
+.square:hover {
+  background-color: #038692;
+  border: 2px solid white;
 }
 
 .endOfTheGame {
