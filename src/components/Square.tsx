@@ -1,5 +1,4 @@
 import React from 'react'
-import { text } from 'stream/consumers'
 
 export const Square = (props: { onClick: () => void, text: string }) => {
     const changeButtonClass = () => {
